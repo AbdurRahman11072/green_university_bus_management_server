@@ -2,11 +2,13 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import customError from "./app/error/customError";
+import { appRouter } from "./app/routes";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(appRouter);
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello there");
 });

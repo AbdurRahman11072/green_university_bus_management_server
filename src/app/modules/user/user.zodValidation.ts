@@ -1,0 +1,45 @@
+import { z } from "zod";
+
+export const userZodSchema = z.object({
+  uId: z
+    .number()
+    .min(6, "Too short uId need at least 6 digits")
+    .max(32, "Too long uId must be with in 32 digits")
+    .optional(),
+  username: z
+    .string()
+    .min(3, "Username must be at least 3 characters long")
+    .max(30, "Username cannot exceed 30 characters")
+    .regex(
+      /^[a-zA-Z0-9_]+$/,
+      "Username can only contain letters, numbers, and underscores"
+    ),
+
+  email: z.email("Invalid email address"),
+
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .max(32, "Password cannot exceed 32 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number")
+    .regex(
+      /[^A-Za-z0-9]/,
+      "Password must contain at least one special character"
+    ),
+
+  avatar_url: z.url("Invalid URL format for avatar").optional(),
+
+  phone_number: z
+    .string()
+    .regex(
+      /^\+\d{1,3}\d{4,14}$/,
+      "Phone number must be in international format (e.g., +1234567890)"
+    )
+    .optional(),
+
+  roles: z.enum(["student", "teacher", "admin"]).default("student"),
+});
+
+export type UserZodTypes = z.infer<typeof userZodSchema>;
