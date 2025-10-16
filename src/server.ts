@@ -14,10 +14,9 @@ let server: Server;
 // try to connect to the database if failed send a response
 connectDB()
   .then(() => {
-    (server = app.listen(config.PORT)),
-      () => {
-        console.log(`Server is running on port: ${config.PORT}`);
-      };
+    server = app.listen(config.PORT, () => {
+      console.log(`server is running on port: ${config.PORT}`);
+    });
   })
   .catch((error) => {
     console.log(`server failed to connect!!! \nError: ${error}`);
