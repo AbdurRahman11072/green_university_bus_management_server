@@ -13,12 +13,12 @@ const createUser = asyncHandler(async (req, res) => {
     data: result,
   });
 });
-// login user using email and password
+// login user using id and password
 
-const loginUserByEmail = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+const loginUserById = asyncHandler(async (req, res) => {
+  const { uId, password } = req.body;
 
-  const result = await userServices.loginUserByEmail(email, password);
+  const result = await userServices.loginUserById(uId, password);
 
   res.status(httpStatus.OK).json({
     status: "Success",
@@ -79,5 +79,5 @@ export const userController = {
   getUserById,
   updateUserById,
   deleteUserById,
-  loginUserByEmail,
+  loginUserById,
 };

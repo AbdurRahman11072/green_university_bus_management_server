@@ -32,8 +32,8 @@ const userSchma = new Schema<UserZodTypes>(
     roles: {
       type: String,
       require: true,
-      enum: ["student", "teacher", "admin"],
-      default: "student",
+      enum: ["Student", "Teacher & Stuff", "Admin"],
+      default: "Student",
     },
   },
   {

@@ -20,12 +20,12 @@ const createUser = async (userData: UserZodTypes) => {
   return { User, token };
 };
 
-const loginUserByEmail = async (email: string, password: string) => {
-  // check if email and password is avaliable
-  if (!email || !password) {
+const loginUserById = async (id: string, password: string) => {
+  // check if id and password is avaliable
+  if (!id || !password) {
     throw new customError("Invalid email & password", 404);
   }
-  const User = await user.findOne({ email });
+  const User = await user.findById({ id });
   // check if the user is really exist
   if (!User) {
     throw new customError("Invalid user email", 404);
@@ -72,5 +72,5 @@ export const userServices = {
   getUserById,
   updateUserById,
   deleteUserById,
-  loginUserByEmail,
+  loginUserById,
 };

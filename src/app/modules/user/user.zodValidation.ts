@@ -39,7 +39,7 @@ export const userZodSchema = z.object({
     )
     .optional(),
 
-  roles: z.enum(["student", "teacher", "admin"]).default("student"),
+  roles: z.enum(["Student", "Teacher & Stuff", "Admin"]).default("Student"),
 });
 
 export type UserZodTypes = z.infer<typeof userZodSchema>;
