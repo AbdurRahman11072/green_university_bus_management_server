@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { string, z } from "zod";
 
 export const userZodSchema = z.object({
   uId: z
@@ -38,6 +38,7 @@ export const userZodSchema = z.object({
       "Phone number must be in international format (e.g., +1234567890)"
     )
     .optional(),
+  bloodGroup: z.enum(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]),
 
   roles: z.enum(["Student", "Teacher & Stuff", "Admin"]).default("Student"),
 });

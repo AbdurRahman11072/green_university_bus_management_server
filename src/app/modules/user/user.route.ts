@@ -6,7 +6,7 @@ import zodValidator from "../../middleware/zodValidator";
 
 const router = Router();
 router.get("/", userController.getAllUser);
-router.get("/login", userController.loginUserByEmail);
+router.get("/login", userController.loginUserById);
 router.get("/:id", userController.getUserById);
 router.post(
   "/create-user",
