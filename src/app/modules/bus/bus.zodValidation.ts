@@ -2,6 +2,10 @@ import z from "zod";
 
 export const busZodSchema = z.object({
   busId: z.string(),
+  busName: z
+    .string()
+    .min(3, "Bus name should content at least 3 cheracter")
+    .max(32, "Bus name should content at least 3 cheracter"),
   busRoute: z.string(),
   busDestination: z.array(
     z.string().nonempty("At least one destination is needed")

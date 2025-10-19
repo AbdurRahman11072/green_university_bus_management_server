@@ -15,7 +15,6 @@ const PostBusInfo = async (busInfo) => {
 };
 
 // delete bus information
-
 const DeleteBusInfo = async (id) => {
   const deleteBusInfo = await Bus.findByIdAndDelete(id);
   return deleteBusInfo;

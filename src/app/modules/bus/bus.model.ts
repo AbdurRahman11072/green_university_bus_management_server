@@ -8,6 +8,10 @@ const busSchema = new Schema<BusZodSchema>(
       required: true,
       unique: true,
     },
+    busName: {
+      type: String,
+      required: true,
+    },
     busRoute: {
       type: String,
       required: true,

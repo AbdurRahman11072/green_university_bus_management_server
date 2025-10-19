@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { userRoutes } from "../modules/user/user.route";
 import { BusRoutes } from "../modules/bus/bus.routes";
+import path from "path";
+import { MaintenanceRoutes } from "../modules/maintenanceTracking/maintenance.route";
+import { NoticeRoutes } from "../modules/notice/notice.route";
 
 const router = Router();
 
@@ -12,6 +15,14 @@ const modulerRouter = [
   {
     path: "/api/v1/bus",
     route: BusRoutes,
+  },
+  {
+    path: "/api/v1/maintenance",
+    route: MaintenanceRoutes,
+  },
+  {
+    path: "/api/v1/notice",
+    route: NoticeRoutes,
   },
 ];
 
