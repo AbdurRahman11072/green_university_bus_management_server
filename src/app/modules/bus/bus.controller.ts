@@ -6,7 +6,6 @@ import { BusZodSchema, busZodSchema } from "./bus.zodValidation";
 // get all the bus information from db
 const GetAllBusInfo = asyncHandler(async (req, res) => {
   const result = await BusServices.GetAllBusInfo();
-  console.log(result);
 
   res.status(status.OK).json({
     status: "Success",

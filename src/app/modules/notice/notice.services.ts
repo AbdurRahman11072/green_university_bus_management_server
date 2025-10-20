@@ -1,9 +1,7 @@
-import customError from "../../error/customError";
 import { Notice } from "./notice.model";
 
 const GetAllNoticeInfo = async () => {
   const info = await Notice.find();
-  console.log(info, "services");
 
   return info;
 };

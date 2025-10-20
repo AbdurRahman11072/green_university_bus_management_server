@@ -6,6 +6,7 @@ export const busZodSchema = z.object({
     .string()
     .min(3, "Bus name should content at least 3 cheracter")
     .max(32, "Bus name should content at least 3 cheracter"),
+  busImg: z.string(),
   busRoute: z.string(),
   busDestination: z.array(
     z.string().nonempty("At least one destination is needed")

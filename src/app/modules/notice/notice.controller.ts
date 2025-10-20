@@ -5,7 +5,6 @@ import { NoticeServices } from "./notice.services";
 // get all the Notice information from db
 const GetAllNoticeInfo = asyncHandler(async (req, res) => {
   const result = await NoticeServices.GetAllNoticeInfo();
-  console.log(result);
 
   res.status(status.OK).json({
     status: "Success",

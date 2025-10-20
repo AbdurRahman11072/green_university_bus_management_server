@@ -3,7 +3,6 @@ import { Bus } from "./bus.model";
 
 const GetAllBusInfo = async () => {
   const info = await Bus.find();
-  console.log(info, "services");
 
   return info;
 };

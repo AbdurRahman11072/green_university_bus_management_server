@@ -16,6 +16,10 @@ const busSchema = new Schema<BusZodSchema>(
       type: String,
       required: true,
     },
+    busImg: {
+      type: String,
+      required: true,
+    },
     busDestination: {
       type: [String],
       required: true,
