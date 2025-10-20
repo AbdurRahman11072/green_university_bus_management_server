@@ -4,6 +4,7 @@ import { BusRoutes } from "../modules/bus/bus.routes";
 import path from "path";
 import { MaintenanceRoutes } from "../modules/maintenanceTracking/maintenance.route";
 import { NoticeRoutes } from "../modules/notice/notice.route";
+import { SurveyRoutes } from "../modules/survey/survey.route";
 
 const router = Router();
 
@@ -23,6 +24,10 @@ const modulerRouter = [
   {
     path: "/api/v1/notice",
     route: NoticeRoutes,
+  },
+  {
+    path: "/api/v1/survey",
+    route: SurveyRoutes,
   },
 ];
 
