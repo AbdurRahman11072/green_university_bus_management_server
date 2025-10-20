@@ -18,18 +18,16 @@ const DeleteBusBookingInfo = async (id) => {
   return deleteBusBookingInfo;
 };
 // update BusBooking information
-const UpdateBusBookingInfo = async (id, newBusBookingInfo) => {
-  const updateBusBookingInfo = await BusBooking.findByIdAndUpdate(
-    id,
-    newBusBookingInfo,
-    {
-      new: true,
-      runValidators: true,
-      context: "query",
-    }
-  );
-  return updateBusBookingInfo;
+// update user by id
+const UpdateBusBookingInfo = async (id: string, data: any) => {
+  const updataBusBookingInfo = await BusBooking.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+  });
+
+  return updataBusBookingInfo;
 };
+
 export const BusBookingServices = {
   GetAllBusBookingInfo,
   PostBusBookingInfo,

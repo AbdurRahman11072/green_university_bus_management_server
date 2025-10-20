@@ -52,9 +52,11 @@ function generateUId() {
 // hash the password before user is created
 userSchma.pre("save", async function (next) {
   const newUId = generateUId();
-  if (!this.isModified("password")) return next;
+  if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 10);
+  console.log();
+
   this.uId = newUId;
   next();
 });

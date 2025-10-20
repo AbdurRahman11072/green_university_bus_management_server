@@ -1,15 +1,19 @@
 import { Router } from "express";
 import { userRoutes } from "../modules/user/user.route";
 import { BusRoutes } from "../modules/bus/bus.routes";
-import path from "path";
 import { MaintenanceRoutes } from "../modules/maintenanceTracking/maintenance.route";
 import { NoticeRoutes } from "../modules/notice/notice.route";
 import { SurveyRoutes } from "../modules/survey/survey.route";
 import { BusBookingRoutes } from "../modules/busBooking/busBooking.route";
+import { AuthRoutes } from "../modules/auth/auth.routes";
 
 const router = Router();
 
 const modulerRouter = [
+  {
+    path: "/api/v1/auth",
+    route: AuthRoutes,
+  },
   {
     path: "/api/v1/user",
     route: userRoutes,
