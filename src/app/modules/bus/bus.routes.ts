@@ -6,6 +6,10 @@ import { busZodSchema } from "./bus.zodValidation";
 const router = Router();
 
 router.get("/get-bus-info", BusController.GetAllBusInfo);
+router.get("/schedule", BusController.getBusRouteSummary);
+router.get("/", BusController.GetBusInfo);
+router.get("/search/:des", BusController.GetBusInfoByDes);
+router.get("/:id", BusController.GetBusInfoById);
 
 router.post(
   "/post-bus-info",

@@ -1,11 +1,7 @@
 import { string, z } from "zod";
 
 export const userZodSchema = z.object({
-  uId: z
-    .number()
-    .min(6, "Too short uId need at least 6 digits")
-    .max(32, "Too long uId must be with in 32 digits")
-    .optional(),
+  uId: z.number(),
   username: z
     .string()
     .min(3, "Username must be at least 3 characters long")
@@ -14,9 +10,6 @@ export const userZodSchema = z.object({
       /^[a-zA-Z0-9_]+$/,
       "Username can only contain letters, numbers, and underscores"
     ),
-
-  email: z.email("Invalid email address"),
-
   password: z
     .string()
     .min(8, "Password must be at least 8 characters long")
@@ -30,6 +23,7 @@ export const userZodSchema = z.object({
     ),
 
   avatar_url: z.url("Invalid URL format for avatar").optional(),
+  verificationImage: z.url("Invalid URL format for avatar").optional(),
 
   phone_number: z
     .string()
@@ -40,7 +34,9 @@ export const userZodSchema = z.object({
     .optional(),
   bloodGroup: z.enum(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]),
 
-  roles: z.enum(["Student", "Teacher & Stuff", "Admin"]).default("Student"),
+  roles: z.enum(["Student", "Teacher", "Driver", "Admin"]).default("Student"),
+  driverLicence: z.string().optional(),
+  licenceExpire: z.string().optional(),
 });
 
 export type UserZodTypes = z.infer<typeof userZodSchema>;

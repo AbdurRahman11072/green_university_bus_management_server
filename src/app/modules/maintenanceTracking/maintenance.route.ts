@@ -7,6 +7,7 @@ router.get(
   "/get-all-maintenance-bus-info",
   MaintenanceController.GetAllMaintenanceInfo
 ),
+  router.get("/total-maintenance-info", MaintenanceController.totalMaintenance),
   router.post(
     "/post-bus-maintenance-info",
     MaintenanceController.PostMaintenanceInfo

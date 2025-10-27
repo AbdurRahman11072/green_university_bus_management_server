@@ -18,8 +18,9 @@ export const busZodSchema = z.object({
   busArrivalTime2: z.string(),
   busStatus: z
     .enum(["On Time", "Late", "In Jame", "Maintenance"])
-    .default("On Time"),
-  status: z.enum(["show", "hidden"]).default("show"),
+    .default("On Time")
+    .optional(),
+  status: z.enum(["show", "hidden"]).default("show").optional(),
 });
 
 export type BusZodSchema = z.infer<typeof busZodSchema>;

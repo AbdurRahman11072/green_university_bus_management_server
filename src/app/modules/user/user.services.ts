@@ -12,6 +12,13 @@ const getUserById = async (id: string) => {
   return User;
 };
 
+// create user
+
+const CreateUser = async (data) => {
+  const User = await user.create(data);
+  return User;
+};
+
 // update user by id
 const updateUserById = async (id: string, data: any) => {
   const User = await user.findByIdAndUpdate(id, data, {
@@ -29,8 +36,16 @@ const deleteUserById = async (id: string) => {
   return User;
 };
 
+const findDriver = async () => {
+  const User = await user.find({ roles: "Driver" });
+
+  return User;
+};
+
 export const userServices = {
   getUserById,
   updateUserById,
   deleteUserById,
+  findDriver,
+  CreateUser,
 };

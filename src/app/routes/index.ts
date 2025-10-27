@@ -6,6 +6,7 @@ import { NoticeRoutes } from "../modules/notice/notice.route";
 import { SurveyRoutes } from "../modules/survey/survey.route";
 import { BusBookingRoutes } from "../modules/busBooking/busBooking.route";
 import { AuthRoutes } from "../modules/auth/auth.routes";
+import { ContectUsRoute } from "../modules/contectus/contectUs.route";
 
 const router = Router();
 
@@ -37,6 +38,10 @@ const modulerRouter = [
   {
     path: "/api/v1/bus-booking",
     route: BusBookingRoutes,
+  },
+  {
+    path: "/api/v1/contect-us",
+    route: ContectUsRoute,
   },
 ];
 

@@ -13,6 +13,15 @@ const getAllUser = asyncHandler(async (req, res) => {
     data: result,
   });
 });
+const createUser = asyncHandler(async (req, res) => {
+  const result = await userServices.CreateUser(req.body);
+
+  res.status(httpStatus.OK).json({
+    status: "Success",
+    message: "User has been created",
+    data: result,
+  });
+});
 
 //getuserByid
 const getUserById = asyncHandler(async (req, res) => {
@@ -49,9 +58,20 @@ const deleteUserById = asyncHandler(async (req, res) => {
   });
 });
 
+const findDriver = asyncHandler(async (req, res) => {
+  const result = await userServices.findDriver();
+  res.status(httpStatus.OK).json({
+    status: "Success",
+    message: "User has been deleted",
+    data: result,
+  });
+});
+
 export const userController = {
   getAllUser,
   getUserById,
   updateUserById,
   deleteUserById,
+  findDriver,
+  createUser,
 };

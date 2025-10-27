@@ -51,9 +51,19 @@ const UpdateMaintenanceInfo = asyncHandler(async (req, res) => {
     data: result,
   });
 });
+
+const totalMaintenance = asyncHandler(async (req, res) => {
+  const result = await MaintenanceServices.totalMaintenance();
+  res.status(status.OK).json({
+    status: "Success",
+    message: "Bus infomation has been updated",
+    data: result,
+  });
+});
 export const MaintenanceController = {
   UpdateMaintenanceInfo,
   DeleteMaintenanceInfo,
   PostMaintenanceInfo,
   GetAllMaintenanceInfo,
+  totalMaintenance,
 };

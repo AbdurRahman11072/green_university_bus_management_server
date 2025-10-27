@@ -13,11 +13,6 @@ const userSchma = new Schema<UserZodTypes>(
       type: String,
       require: true,
     },
-    email: {
-      type: String,
-      require: true,
-      unique: true,
-    },
     password: {
       type: String,
       require: true,
@@ -36,8 +31,14 @@ const userSchma = new Schema<UserZodTypes>(
     roles: {
       type: String,
       require: true,
-      enum: ["Student", "Teacher & Stuff", "Admin"],
+      enum: ["Student", "Teacher", "Driver", "Admin"],
       default: "Student",
+    },
+    driverLicence: {
+      type: String,
+    },
+    licenceExpire: {
+      type: String,
     },
   },
   {
@@ -45,19 +46,13 @@ const userSchma = new Schema<UserZodTypes>(
   }
 );
 
-function generateUId() {
-  return Math.floor(100000 + Math.random() * 900000); // 6 digits
-}
-
 // hash the password before user is created
 userSchma.pre("save", async function (next) {
-  const newUId = generateUId();
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 10);
   console.log();
 
-  this.uId = newUId;
   next();
 });
 

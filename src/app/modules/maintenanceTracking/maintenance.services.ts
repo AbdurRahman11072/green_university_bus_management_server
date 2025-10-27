@@ -30,9 +30,40 @@ const UpdateMaintenanceInfo = async (id, newMaintenanceInfo) => {
   );
   return updateMaintenanceInfo;
 };
+const totalMaintenance = async () => {
+  const TotalMaintenance = Maintenance.aggregate([
+    {
+      $group: {
+        _id: {
+          busId: "$busId",
+          busRoute: "$busRoute",
+        },
+        totalBusCount: { $sum: 1 },
+        lastCreatedData: { $last: "$$ROOT" },
+      },
+    },
+    {
+      $project: {
+        busId: "$_id.busId",
+        busRoute: "$_id.busRoute",
+        totalBusCount: 1,
+        lastCreatedData: 1,
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        busId: 1,
+        busRoute: 1,
+      },
+    },
+  ]);
+  return TotalMaintenance;
+};
 export const MaintenanceServices = {
   GetAllMaintenanceInfo,
   PostMaintenanceInfo,
   DeleteMaintenanceInfo,
   UpdateMaintenanceInfo,
+  totalMaintenance,
 };

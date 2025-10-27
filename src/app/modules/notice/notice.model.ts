@@ -2,6 +2,11 @@ import { model, Schema } from "mongoose";
 
 const NoticeSchema = new Schema(
   {
+    noticeFor: {
+      type: String,
+      enum: ["Student", "Teacher", "Driver", "All"],
+      default: "All",
+    },
     subject: {
       type: String,
       require: true,
@@ -9,11 +14,6 @@ const NoticeSchema = new Schema(
     description: {
       type: String,
       require: true,
-    },
-    status: {
-      type: String,
-      enum: ["Important", "Announcement"],
-      default: "Announcement",
     },
     seen: {
       type: [String],
